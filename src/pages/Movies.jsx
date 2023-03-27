@@ -17,6 +17,8 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const seacrhMovie = searchParams.get('quary') ?? "";
   
+  console.log(setSearchParams);
+  
   useEffect(() => {
     setStatus(STATUS.LOADING);
     fetch(`

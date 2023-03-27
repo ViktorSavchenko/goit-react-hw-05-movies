@@ -3,6 +3,8 @@ import { useSearchParams } from "react-router-dom";
 const SearchForm = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   
+  console.log(searchParams);
+  
   const onSearchSubmit = e => {
     e.preventDefault();
     setSearchParams({ quary: e.target.elements.moviename.value });
