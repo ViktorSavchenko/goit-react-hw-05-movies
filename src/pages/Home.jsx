@@ -8,8 +8,6 @@ const Movies = () => {
     fetch('https://api.themoviedb.org/3/trending/movie/day?api_key=17cad80f9662381de06e4551c499d7de').then(r => r.json()).then(movies => setMovise(movies.results));
   }, [])
   
-  // console.log(movies);
-  
   return (
     <MoviesList dataMovies={movies }/>
   );

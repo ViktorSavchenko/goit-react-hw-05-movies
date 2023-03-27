@@ -17,7 +17,13 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const seacrhMovie = searchParams.get('quary') ?? "";
   
-  console.log(setSearchParams);
+  const onChangeURLbyForm = data => {
+    if (data === '') {
+      return setSearchParams({});
+    }
+    setSearchParams({ quary: data });
+    
+  };
   
   useEffect(() => {
     setStatus(STATUS.LOADING);
@@ -30,33 +36,17 @@ https://api.themoviedb.org/3/search/movie?api_key=17cad80f9662381de06e4551c499d7
       })
   }, [seacrhMovie]);
   
-  if (status === STATUS.LOADING) { 
-    return (
-      <>
-        <SearchForm />
-        <div>LOADING...</div>
-      </>
-    );
-  };
-  
-  
-  if (status === STATUS.RESOLVED && movies.results.length > 0) { 
-    return (
-      <>
-        <SearchForm />
-        <SearchList serchData={ movies} />
-      </>
-    );
-  };
-  
-   if (status === STATUS.RESOLVED && movies.results.length === 0) { 
-    return (
-      <>
-        <SearchForm />
-        <div>Тут ничего нет</div>
-      </>
-    );
-  };
+  return (
+    <>
+      <SearchForm onClick={onChangeURLbyForm} />
+      
+      {status === STATUS.LOADING && <div>LOADING...</div>}
+      
+      {status === STATUS.RESOLVED && movies.results.length === 0 && <div>Тут ничего нет</div>}
+      
+      {status === STATUS.RESOLVED && movies.results.length > 0 && <SearchList serchData={movies} />}
+    </>
+  );
 };
 
 export default Movies;

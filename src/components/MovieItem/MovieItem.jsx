@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const STATUS = {
   IDLE: 'idle',
@@ -10,8 +11,9 @@ const STATUS = {
 const MovieItem = ({ movieId }) => {
   const [status, setStatus] = useState(STATUS.IDLE);
   const [movie, setMovie] = useState({});
-  const { original_title, backdrop_path, vote_average, release_date, genres, overview} = movie;
-  
+  const { original_title, backdrop_path, vote_average, release_date, genres, overview } = movie;
+  const location = useLocation(); 
+  const linkBackPage = useRef(location.state?.from ?? '/')
   
   useEffect(() => {
     setStatus(STATUS.LOADING);
@@ -30,26 +32,28 @@ const MovieItem = ({ movieId }) => {
   
   if (status === STATUS.RESOLVED) {
     return (
-    <div>
-      <h2>{original_title}</h2>
-      
       <div>
-        <img src={`https://image.tmdb.org/t/p/w300${backdrop_path}`} alt={original_title} />
-        <p>Rating: {vote_average }</p>
-      </div>
+        <Link to={linkBackPage.current}>Go back</Link>
+        
+        <h2>{original_title}</h2>
       
-      <ul>        
-        <li>{release_date}</li>
+        <div>
+          <img src={`https://image.tmdb.org/t/p/w300${backdrop_path}`} alt={original_title} />
+          <p>Rating: {vote_average}</p>
+        </div>
+      
+        <ul>
+          <li>{release_date}</li>
         
-        <li>
-          <ul>
-              {genres.map(({ id, name }) => (<li key={id}>{ name}</li>))}
-          </ul>
-        </li>       
+          <li>
+            <ul>
+              {genres.map(({ id, name }) => (<li key={id}>{name}</li>))}
+            </ul>
+          </li>
         
-        <li>{overview }</li>
-      </ul>
-    </div>
+          <li>{overview}</li>
+        </ul>
+      </div>
     );
   };  
 };

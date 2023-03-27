@@ -23,8 +23,6 @@ const Reviews = () => {
       })
   }, [movieId]);
   
-  console.log(reviews);
-  
   if (status === STATUS.LOADING) { 
     return (
       <div>LOADING...</div>

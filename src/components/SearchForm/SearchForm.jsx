@@ -1,24 +1,34 @@
-import { useSearchParams } from "react-router-dom";
+import { useState } from "react";
 
-const SearchForm = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+const SearchForm = ({ onClick }) => {
+  const [value, setValue] = useState('');
   
-  console.log(searchParams);
+  const onInputChange = e => {
+    setValue(e.target.value);
+  };
   
   const onSearchSubmit = e => {
     e.preventDefault();
-    setSearchParams({ quary: e.target.elements.moviename.value });
     
-    e.target.reset();
+    const searchValue = e.target.elements.search.value.trim()
+    const searchParams = searchValue !== '' ? searchValue : [];
+    
+    onClick(searchParams);
+    
+    setValue('');
   };
   
   return (
     <form onSubmit={onSearchSubmit}>
       <label>
-        <input type="text" name="moviename"/>
+        <input
+          type="text"
+          value={value}
+          name="search"
+          onChange={onInputChange}/>
       </label>
       
-      <button type="submit">Search</button>
+      <button type="submit" >Search</button>
     </form>
   );
 };
