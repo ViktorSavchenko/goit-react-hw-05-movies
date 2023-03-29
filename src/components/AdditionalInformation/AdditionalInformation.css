@@ -1,0 +1,33 @@
+.Info-container {
+  background-color: #efefef;
+}
+
+.Info-title {
+  padding: 12px 12px 0 12px;
+  margin-bottom: 6px;
+
+  font-style: italic;
+}
+
+.Info-list {
+  display: flex;
+
+  padding: 0px 12px 12px 12px;
+}
+
+.Header-list {
+  display: flex;
+  align-items: center;
+}
+
+.Info-list__item {
+  font-weight: 600;
+}
+
+.Info-list__item:not(:first-child) {
+  margin-left: 12px;
+}
+
+.Info-list__item:hover {
+  text-decoration: underline;
+}

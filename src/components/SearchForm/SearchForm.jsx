@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './SearchForm.css'
 
 const SearchForm = ({ onClick }) => {
   const [value, setValue] = useState('');
@@ -19,17 +20,21 @@ const SearchForm = ({ onClick }) => {
   };
   
   return (
-    <form onSubmit={onSearchSubmit}>
-      <label>
-        <input
-          type="text"
-          value={value}
-          name="search"
-          onChange={onInputChange}/>
-      </label>
+    <div className="Container">
+      <form onSubmit={onSearchSubmit} className='Search-form'>
+        <label>
+          <input
+            type="text"
+            value={value}
+            name="search"
+            placeholder="Search..."
+            onChange={onInputChange}
+            className='Search-form__input' />
+        </label>
       
-      <button type="submit" >Search</button>
-    </form>
+        <button type="submit" className="Search-form__button">Search</button>
+      </form>
+    </div>
   );
 };
 

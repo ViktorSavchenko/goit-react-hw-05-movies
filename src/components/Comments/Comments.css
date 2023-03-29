@@ -1,0 +1,35 @@
+.Comment-list {
+  padding: 12px;
+
+  background-color: rgba(180, 180, 180, 0.5);
+}
+
+.Comment-list__item {
+  padding: 12px;
+
+  border-radius: 6px;
+
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+
+  background-color: #fff;
+}
+
+.Comment-list__item:not(:last-child) {
+  margin-bottom: 6px;
+}
+
+.Comment-list__item-create,
+.Comment-list__item-author {
+  margin-bottom: 6px;
+
+  font-weight: 600;
+}
+
+.Comment-list__item-review {
+  font-weight: 600;
+}
+
+.Comment-span {
+  font-weight: 400;
+}

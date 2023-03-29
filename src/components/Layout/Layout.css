@@ -1,0 +1,34 @@
+.Header-container {
+  display: flex;
+
+  padding: 0;
+
+  background-color: #efefef;
+}
+
+.Header-list {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+}
+
+.Header-list__item {
+  font-weight: 600;
+}
+
+.Header-list__item:not(:first-child) {
+  margin-left: 12px;
+}
+
+.Header-list__link:hover {
+  text-decoration: underline;
+}
+
+.Main-title {
+  margin: 0 auto;
+
+  font-style: italic;
+  letter-spacing: 0.75em;
+
+  color: #fff;
+}
