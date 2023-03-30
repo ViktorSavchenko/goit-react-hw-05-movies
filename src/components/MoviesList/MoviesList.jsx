@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import PropTypes from 'prop-types';
 import './MoviesList.css'
 
 const MoviesList = ({ dataMovies }) => {
@@ -42,4 +43,13 @@ const MoviesList = ({ dataMovies }) => {
 
 export default MoviesList;
 
-// https://image.tmdb.org/t/p/w300//t6HIqrRAclMCA60NsSmeqe9RmNV.jpg
+MoviesList.propTypes = {
+  dataMovies: PropTypes.arrayOf(
+  PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    poster_path: PropTypes.string.isRequired,
+    vote_average: PropTypes.number.isRequired,
+    release_date: PropTypes.string.isRequired,
+  }))
+};

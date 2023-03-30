@@ -1,0 +1,13 @@
+.Not-found-wrapper {
+  text-align: center;
+
+  background-color: rgba(180, 180, 180, 0.5);
+}
+
+.Not-found-wrapper__title {
+  padding: 18px;
+
+  text-align: center;
+
+  color: #fff;
+}

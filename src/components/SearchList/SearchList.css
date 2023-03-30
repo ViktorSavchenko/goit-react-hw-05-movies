@@ -32,3 +32,49 @@
 .Search-movies-list__img {
   height: 335px;
 }
+
+.Banner-wrapper {
+  position: relative;
+}
+
+.Movies-list__rating {
+  position: absolute;
+
+  padding: 3px 12px;
+  min-width: 36px;
+
+  right: 0;
+  bottom: 18px;
+
+  text-align: center;
+  color: #fff;
+  background-color: rgba(68, 64, 247, 0.7);
+}
+
+.Descriprion-wrapper {
+  padding: 6px;
+
+  text-align: center;
+}
+
+.Descriprion-title {
+  margin: 6px;
+
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  color: #292c2f;
+}
+
+.Descriprion-date {
+  font-size: 14px;
+
+  color: #292c2f;
+}
+
+.Movies-list__img {
+  width: 100%;
+}

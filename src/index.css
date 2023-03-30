@@ -9,7 +9,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background: #000 url(../public/bgi4.jpg) top center no-repeat;
+  background: #000 url(../public/images/bgi4.jpg) top center no-repeat;
 }
 
 code {

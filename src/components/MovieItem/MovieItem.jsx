@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import PropTypes from 'prop-types';
 import './MovieItem.css'
 
 const STATUS = {
@@ -23,9 +24,10 @@ const MovieItem = ({ movieId }) => {
         setMovie(movie);
         setStatus(STATUS.RESOLVED);
       })
+      .catch(error => {
+        setStatus('reject');
+      });
   }, [movieId]);
-  
-  // console.log(movie);
   
   if (status === STATUS.LOADING) { 
     return (
@@ -90,3 +92,7 @@ const MovieItem = ({ movieId }) => {
 };
 
 export default MovieItem;
+
+MovieItem.propTypes = {
+    movieId: PropTypes.string.isRequired,
+};

@@ -11,13 +11,22 @@ const SearchList = ({ serchData }) => {
         {results.map(({ id, original_title, poster_path, vote_average, release_date }) => (
           <li key={id} className="Search-movies-list__item">
             <Link to={`${id}`} state={{ from: location }}><div className="Banner-wrapper">
-              <img
+              {poster_path ?
+                (<img
                 className="Movies-list__img Search-movies-list__img"
                 src={`https://image.tmdb.org/t/p/w300${poster_path}`}
                 alt={original_title}
                 width={223}
                 height={335}
-              />
+                />) :
+                (<img
+                className="Movies-list__img Search-movies-list__img"
+                src="images/nf-cat.jpg"
+                alt={original_title}
+                width={223}
+                height={335}
+                />)
+              }
                   
               <p className="Movies-list__rating">{(vote_average).toFixed(1)
               }</p>

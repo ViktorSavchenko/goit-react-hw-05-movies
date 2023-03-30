@@ -1,6 +1,7 @@
-import Actors from 'components/Actors/Actors';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import NotFound from "components/NotFound/NotFound";
+import Actors from 'components/Actors/Actors';
 
 const STATUS = {
   IDLE: 'idle',
@@ -21,6 +22,9 @@ const Cast = () => {
         setMovieActors(actors.cast);
         setStatus(STATUS.RESOLVED);
       })
+      .catch(error => {
+        setStatus('reject');
+      });
   }, [movieId]);
   
   if (status === STATUS.LOADING) { 
@@ -32,6 +36,12 @@ const Cast = () => {
   if (status === STATUS.RESOLVED && movieActors.length !==0) { 
     return (
       <Actors dataActors={movieActors } />
+    );
+  };
+  
+  if (status === STATUS.REJECTED || movieActors.length ===0) { 
+    return (
+      <NotFound>All actors wished to be incognito :)</NotFound>
     );
   };
 };

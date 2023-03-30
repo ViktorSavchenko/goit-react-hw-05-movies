@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import SearchForm from "components/SearchForm/SearchForm";
 import SearchList from "components/SearchList/Searchlist";
+import NotFound from "components/NotFound/NotFound";
 
 
 const STATUS = {
@@ -34,6 +35,9 @@ https://api.themoviedb.org/3/search/movie?api_key=17cad80f9662381de06e4551c499d7
         setMovies(movies);
         setStatus(STATUS.RESOLVED);
       })
+      .catch(error => {
+        setStatus('reject');
+      });
   }, [seacrhMovie]);
   
   return (
@@ -42,7 +46,7 @@ https://api.themoviedb.org/3/search/movie?api_key=17cad80f9662381de06e4551c499d7
       
       {status === STATUS.LOADING && <div>LOADING...</div>}
       
-      {status === STATUS.RESOLVED && movies.results.length === 0 && <div>Тут ничего нет</div>}
+      {status === STATUS.RESOLVED && movies.results.length === 0 && <NotFound>There is nothing here or this material was not found, change your search parameters!</NotFound>}
       
       {status === STATUS.RESOLVED && movies.results.length > 0 && <SearchList serchData={movies} />}
     </>
